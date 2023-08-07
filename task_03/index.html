@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let eggs = 0,
+            notBurnsPrize = 0,
+            addMoneyToPrize = 0;
+
+        let questions = [
+            "1 + 2 =",                              // 1
+            "1 + 1 =",                              // 2
+            "2 + 3 =",                              // 3
+            "1 + 3 =",                              // 4
+            "2 + 4 =",                              // 5
+            "1 + 4 =",                              // 6
+            "2 + 5 =",                              // 7
+            "4 + 3 =",                              // 8
+            "1 + 9 ="                               // 9
+        ],
+            answerVariants = [
+                ["\na) 3", "\nб) 2", "\nв) 5", "\nг) 4"],       // 1
+                ["\na) 2", "\nб) 3", "\nв) 5", "\nг) 4"],       // 2
+                ["\na) 5", "\nб) 2", "\nв) 3", "\nг) 4"],       // 3
+                ["\na) 4", "\nб) 2", "\nв) 5", "\nг) 3"],       // 4
+                ["\na) 6", "\nб) 2", "\nв) 5", "\nг) 4"],        // 5
+                ["\na) 5", "\nб) 2", "\nв) 5", "\nг) 4"],        // 6
+                ["\na) 7", "\nб) 2", "\nв) 5", "\nг) 4"],        // 7
+                ["\na) 7", "\nб) 2", "\nв) 5", "\nг) 4"],        // 8
+                ["\na) 10", "\nб) 2", "\nв) 5", "\nг) 4"]       // 9
+            ],
+            bingoAnswer = [3, 2, 5, 4, 6, 5, 7, 7, 10],
+            goodAnswer = [
+                'ПРАВИЛЬНА відповідь. ви виграли пірожок, він на полці, хапайте',
+                'Ну от нарешті, ти вгадав правильну відповідь',
+                'круто! молодець. тільки не плакай',
+                'ну нарешті, можеш, якшо захочеш. ну!',
+                'не погано ;)',
+                'ну нарешті, ок',
+                'пойдьот',
+                'ok',
+                'ну ладно, ок'
+            ],
+            prizeMoney = [
+                500,
+                1000,
+                2000,
+                3000,
+                5000,
+                8000,
+                10000,
+                13000,
+                15000,
+                25000,
+                59000,
+                100000,
+                250000,
+                500000,
+                1000000
+            ];
+
+            // random
+            // let legthOfArrayAnswer = goodAnswer.length-1;
+            // let goodAnswerNumber = Math.floor(Math.random() * (9-0)+0); // треба вставиту у 90-рядок `${goodAnswer[goodAnswerNumber]}`
+
+        for (let i = 0; i < questions.length; i++) {
+            if (i == 0) {
+                alert("Чи готові ви пограти у гру Одурачений чи одурачена?");
+            }
+            // if (i % 5 == 0){
+            //     notBurnsPrize = i;
+            // } else notBurnsPrize == i;
+            
+            let answerFromCustomer = prompt(`будь ласка, введіть правильну відповідь на наступне питання ${i}:\n ${questions[i]} \n ${answerVariants[i]}`);
+            // let yourPrizeMoney = 0;
+
+            if (answerFromCustomer == null || answerFromCustomer == undefined || answerFromCustomer == '') {
+                alert('показалось, що у тебе великий потенціал, але нажаль');
+                alert('гру закінчено, дівчинко, завтра пощастить');
+                alert(`Ваш виграш ${prizeMoney[addMoneyToPrize]}`);
+                break;
+            }
+
+            if (answerFromCustomer != bingoAnswer[i]) {
+                alert('нажаль, неправильна відповідь. може кави?');
+                confirm('чи бажаєте продовжити');
+                addMoneyToPrize--;
+                alert(addMoneyToPrize);
+                if (confirm) {
+                    continue;
+                }
+            } else alert(`${goodAnswer[i]}. \nВаш виграш ${prizeMoney[addMoneyToPrize]}`);
+                addMoneyToPrize++;
+                alert(addMoneyToPrize);
+
+            if (i > (questions.length-1)) {
+                alert("не переживайте, ваш рівень - перший клас у школі. завтра пощастить");
+                // alert("ваш виграш = "+ prizeMoney[eggs++] + " $");
+                break;
+            } else if (i < 4) {
+                alert("ідемо далі ;)");
+            }
+        }
+    </script>
+</body>
+
+</html>

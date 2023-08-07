@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let wordFromUser = prompt("введіть слово, а я перевілю його на поліндромізм.\nНаприклад: oкo, пилип, мадам,");
+
+        function polindromFunc(){
+            let polindrom = wordFromUser.split('').reverse().join('');
+
+            if (polindrom.toLowerCase() === wordFromUser.toLowerCase()){
+                console.log(`введене слово ${wordFromUser} являється поліндромом`);
+                alert(`введене слово ${wordFromUser} являється поліндромом`);
+            } else console.log("не являється поліндромом. спробуйте пізніше ще разочок");
+                //    alert("не являється поліндромом. спробуйте пізніше ще разочок");
+        }
+        polindromFunc();
+    </script>
+</body>
+</html>
